@@ -1,9 +1,9 @@
 #pragma once
 
-class Game
+class IGame
 {
 public:
-	virtual ~Game(){};
+	virtual ~IGame(){};
 	/**
 	 * \brief controls game loop
 	 * \return true if game is finished, false  otherwise

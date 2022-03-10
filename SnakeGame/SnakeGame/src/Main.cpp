@@ -5,7 +5,7 @@
 
 using namespace Lamter;
 
-#define TARGET_FPS 30
+#define TARGET_FPS 60
 
 int main()
 {

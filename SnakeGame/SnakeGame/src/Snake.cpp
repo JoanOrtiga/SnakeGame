@@ -13,7 +13,7 @@ bool Snake::ExitGame()
 
 void Snake::Update(double dt)
 {
-
+	
 }
 
 void Snake::DrawnUpdate()
@@ -23,6 +23,6 @@ void Snake::DrawnUpdate()
 
 void Snake::Draw()
 {
-	
+
 }
 

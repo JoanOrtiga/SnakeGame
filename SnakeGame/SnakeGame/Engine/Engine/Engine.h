@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Time.h"
-#include "../Structures/Game.h"
+#include "../Structures/IGame.h"
 
 namespace Lamter
 {
@@ -9,10 +9,10 @@ namespace Lamter
 	{
 	private:
 		Time* gameTime;
-		Game& game;
+		IGame& game;
 
 	public:
-		Engine(Game& _game, int targetFPS);
+		Engine(IGame& _game, int targetFPS);
 		~Engine();
 		void Run();
 	};

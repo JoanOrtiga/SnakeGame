@@ -36,6 +36,9 @@
     <ClCompile Include="src\Snake.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Player\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Structures\IGameObject.h">
@@ -59,13 +62,16 @@
     <ClInclude Include="Engine\Engine\Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Structures\Game.h">
+    <ClInclude Include="Engine\Structures\IGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Engine\Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Snake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

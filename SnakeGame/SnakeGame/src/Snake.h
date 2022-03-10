@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Engine/Structures/Game.h"
+#include "../Engine/Structures/IGame.h"
 
-class Snake : public Game
+class Snake : public IGame
 {
 public:
 	Snake();
