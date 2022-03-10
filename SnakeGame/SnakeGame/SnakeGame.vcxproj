@@ -140,20 +140,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Console\ConsoleController.cpp" />
-    <ClCompile Include="Engine\Engine.cpp" />
-    <ClCompile Include="Engine\IGameObject.cpp" />
+    <ClCompile Include="Engine\Engine\Engine.cpp" />
     <ClCompile Include="Engine\Input\InputManager.cpp" />
-    <ClCompile Include="Engine\Random.cpp" />
-    <ClCompile Include="src\SnakeGame.cpp" />
+    <ClCompile Include="Engine\Engine\Random.cpp" />
+    <ClCompile Include="src\Snake.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="Engine\Engine\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Console\Color.h" />
     <ClInclude Include="Engine\Console\ConsoleController.h" />
-    <ClInclude Include="Engine\Engine.h" />
-    <ClInclude Include="Engine\IGameObject.h" />
+    <ClInclude Include="Engine\Engine\Engine.h" />
+    <ClInclude Include="Engine\Structures\IGameObject.h" />
     <ClInclude Include="Engine\Input\InputManager.h" />
     <ClInclude Include="Engine\Input\KeyCode.h" />
-    <ClInclude Include="Engine\Random.h" />
+    <ClInclude Include="Engine\Engine\Random.h" />
+    <ClInclude Include="Engine\Structures\Game.h" />
+    <ClInclude Include="Engine\Engine\Time.h" />
+    <ClInclude Include="src\Snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

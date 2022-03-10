@@ -5,6 +5,12 @@
 
 namespace Lamter
 {
+    COORD ConsoleController::consolePixelSize;
+    COORD ConsoleController::consoleBufferSize;
+
+    HANDLE ConsoleController::stdHandle;
+    CONSOLE_SCREEN_BUFFER_INFO ConsoleController::csbi;
+
     void ConsoleController::Init(COORD _consoleBufferSize, bool showCursor = false)
     {
         _SMALL_RECT Rect;
