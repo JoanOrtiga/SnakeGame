@@ -11,8 +11,10 @@ namespace Lamter
     HANDLE ConsoleController::stdHandle;
     CONSOLE_SCREEN_BUFFER_INFO ConsoleController::csbi;
 
-    void ConsoleController::Init(COORD _consoleBufferSize, bool showCursor = false)
+    void ConsoleController::Init(COORD _consoleBufferSize, bool showCursor)
     {
+        stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+
         _SMALL_RECT Rect;
         Rect.Top = 0;
         Rect.Left = 0;
@@ -20,9 +22,10 @@ namespace Lamter
         Rect.Right = _consoleBufferSize.X - 1;
 
         SetConsoleWindowInfo(stdHandle, TRUE, &Rect);
-        SetConsoleScreenBufferSize(stdHandle, { _consoleBufferSize.X, _consoleBufferSize.Y });
+        SetConsoleScreenBufferSize(stdHandle, _consoleBufferSize);
 
-        consoleBufferSize = _consoleBufferSize;
+        consoleBufferSize.X = _consoleBufferSize.X - 1;
+        consoleBufferSize.Y = _consoleBufferSize.Y - 1;
 
         SetCursorVisible(showCursor);
     }
@@ -79,6 +82,11 @@ namespace Lamter
         SetConsoleTextAttribute(stdHandle, WORD(color));
     }
 
+    COORD ConsoleController::GetConsoleBufferSize()
+    {
+        return consoleBufferSize;
+    }
+
     void ConsoleController::SetConsoleSize(int width, int heigh)
     {
         HWND hwnd = GetConsoleWindow();
@@ -94,7 +102,8 @@ namespace Lamter
 
     void ConsoleController::SetCursorPosition(COORD coord)
     {
-        SetConsoleCursorPosition(stdHandle, coord);
+        std::cout.flush();
+        SetConsoleCursorPosition(stdHandle, coord);//{coord.Y, coord.X});
     }
 
     void ConsoleController::CLS()
@@ -129,7 +138,6 @@ namespace Lamter
     void ConsoleController::DrawAt(char character, int x, int y)
     {
         DrawAt(character, { (short)x, (short)y });
-
     }
 
     void ConsoleController::DrawAt(std::string text, int x, int y)

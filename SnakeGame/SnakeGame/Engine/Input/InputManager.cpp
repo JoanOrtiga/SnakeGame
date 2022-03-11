@@ -1,7 +1,5 @@
 #include "InputManager.h"
 
-#include <iostream>
-
 namespace Lamter
 {
 	std::map<KeyCode, bool> InputManager::lastKeysState;

@@ -1,6 +1,5 @@
 #include "Time.h"
 
-#include <ctime>
 #include <Windows.h>
 
 

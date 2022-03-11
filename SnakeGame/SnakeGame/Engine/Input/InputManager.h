@@ -1,8 +1,6 @@
 #pragma once
 
 #include <map>
-#include <Windows.h>
-
 #include "KeyCode.h"
 
 namespace Lamter

@@ -34,6 +34,7 @@ namespace Lamter
 
 		static void SetConsoleColor(Color color);
 
+		static COORD GetConsoleBufferSize();
 
 	private:
 		static void GetWindowPos(int* x, int* y);

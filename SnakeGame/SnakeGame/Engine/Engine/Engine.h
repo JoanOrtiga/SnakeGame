@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Windows.h>
+
 #include "Time.h"
 #include "../Structures/IGame.h"
 
@@ -12,7 +14,7 @@ namespace Lamter
 		IGame& game;
 
 	public:
-		Engine(IGame& _game, int targetFPS);
+		Engine(IGame& _game, int targetFPS, COORD consoleBufferSize, bool showCursor);
 		~Engine();
 		void Run();
 	};

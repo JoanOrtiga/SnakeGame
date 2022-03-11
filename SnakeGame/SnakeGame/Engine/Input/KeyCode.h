@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdexcept>
-#include <WinUser.h>
+#include <Windows.h>
 
 namespace Lamter
 {

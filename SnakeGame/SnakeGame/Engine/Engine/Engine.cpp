@@ -1,18 +1,16 @@
 #include "Engine.h"
 
-#include <iostream>
-
 #include "Random.h"
 #include "../Input/InputManager.h"
 #include "../Console/ConsoleController.h"
 
 namespace Lamter
 {
-	Engine::Engine(IGame& _game, int targetFPS) : gameTime(new Time(targetFPS)), game(_game)
+	Engine::Engine(IGame& _game, int targetFPS, COORD consoleBufferSize, bool showCursor) : gameTime(new Time(targetFPS)), game(_game)
 	{
+		ConsoleController::Init(consoleBufferSize, showCursor);
 		InputManager::Init();
 		Random::Init();
-		ConsoleController::Init({10,10}, false);
 	}
 
 	void Engine::Run()
