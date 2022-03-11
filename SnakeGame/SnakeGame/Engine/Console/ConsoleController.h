@@ -43,6 +43,4 @@ namespace Lamter
 		static void SetConsoleSize(int width, int heigh);
 		static bool HasConsoleChangedSize();
 	};
-
-
 }

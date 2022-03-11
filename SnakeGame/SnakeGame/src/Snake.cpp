@@ -4,52 +4,32 @@
 #include "../Engine/Console/ConsoleController.h"
 
 
-Snake::Snake()
-{
-	//player = new Player(5);
-}
+Snake::Snake() = default;
 
 Snake::~Snake() = default;
+
+void Snake::Init()
+{
+	player = new Player(5);
+}
 
 bool Snake::ExitGame()
 {
 	return false;
 }
 
-int posX;
-int posY;
-
 void Snake::Update(double dt)
 {
-	if(Lamter::InputManager::IsKeyPressed(Lamter::KeyCode::D))
-	{
-		posX = min(Lamter::ConsoleController::GetConsoleBufferSize().X, posX++);
-	}
-	else if (Lamter::InputManager::IsKeyPressed(Lamter::KeyCode::A))
-	{
-		posX--;
-	}
-	else if (Lamter::InputManager::IsKeyPressed(Lamter::KeyCode::S))
-	{
-		posY++;
-	}
-	else if (Lamter::InputManager::IsKeyPressed(Lamter::KeyCode::W))
-	{
-		posY--;
-	}
-	//player->Update(dt);
-
-	
+	player->Update(dt);
 }
 
 void Snake::DrawnUpdate()
 {
-	//player->DrawnUpdate();
+	player->DrawnUpdate();
 }
 
 void Snake::Draw()
 {
-	Lamter::ConsoleController::DrawAt(char(219), posX, posY);
-	//player->Draw();
+	player->Draw();
 }
 

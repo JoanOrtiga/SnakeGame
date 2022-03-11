@@ -11,10 +11,10 @@ namespace Lamter
 	{
 	private:
 		Time* gameTime;
-		IGame& game;
+		IGame* game;
 
 	public:
-		Engine(IGame& _game, int targetFPS, COORD consoleBufferSize, bool showCursor);
+		Engine(IGame* _game, int targetFPS, COORD consoleBufferSize, bool showCursor);
 		~Engine();
 		void Run();
 	};

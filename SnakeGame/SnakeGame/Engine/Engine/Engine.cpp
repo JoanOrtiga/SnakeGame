@@ -6,16 +6,19 @@
 
 namespace Lamter
 {
-	Engine::Engine(IGame& _game, int targetFPS, COORD consoleBufferSize, bool showCursor) : gameTime(new Time(targetFPS)), game(_game)
+	Engine::Engine(IGame* _game, int targetFPS, COORD consoleBufferSize, bool showCursor) : gameTime(new Time(targetFPS))
 	{
 		ConsoleController::Init(consoleBufferSize, showCursor);
 		InputManager::Init();
 		Random::Init();
+
+		game = _game;
+		game->Init();
 	}
 
 	void Engine::Run()
 	{
-		while (!game.ExitGame())
+		while (!game->ExitGame())
 		{
 			InputManager::UpdateInput();
 
@@ -23,12 +26,12 @@ namespace Lamter
 			const bool shouldDraw = gameTime->ShouldDrawNextFrame(normalUpdate);
 
 			if(normalUpdate)
-				game.Update(gameTime->deltaSeconds);
+				game->Update(gameTime->deltaSeconds);
 
 			if(shouldDraw)
 			{
-				game.DrawnUpdate();
-				game.Draw();
+				game->DrawnUpdate();
+				game->Draw();
 			}
 		}
 	}

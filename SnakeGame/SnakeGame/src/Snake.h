@@ -11,6 +11,7 @@ private:
 public:
 	Snake();
 	~Snake() override;
+	void Init() override;
 	bool ExitGame() override;
 	void Update(double dt) override;
 	void DrawnUpdate() override;

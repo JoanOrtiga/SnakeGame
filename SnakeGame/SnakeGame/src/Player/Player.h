@@ -1,6 +1,8 @@
 #pragma once
 
+#include <vector>
 #include <Windows.h>
+
 #include "../../Engine/Structures/IGameObject.h"
 
 class Player : public IGameObject
@@ -10,12 +12,12 @@ public:
 private:
 	static constexpr char bodyShape = 219;
 
-	COORD headPosition;
+	std::vector<COORD> bodyParts;
 	short startLenght;
 
 	COORD moveDirection;
 
-	static constexpr float movementSpeed = 1; //seconds per buffer Cell
+	static constexpr float movementSpeed = 0.2; //seconds per buffer Cell
 	float secondCounter;
 	bool drawNext;
 

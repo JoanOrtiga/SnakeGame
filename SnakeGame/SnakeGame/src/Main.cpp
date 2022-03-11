@@ -7,7 +7,7 @@ using namespace Lamter;
 
 int main()
 {
-    Snake game;
-    Engine engine(game, TARGET_FPS, { 70,30},false);
+	Snake* game = new Snake();
+	Engine engine(game, TARGET_FPS, {70, 30},false);
     engine.Run();
 }
