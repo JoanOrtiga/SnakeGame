@@ -4,6 +4,7 @@
 #include <Windows.h>
 
 #include "Color.h"
+#include "../Classes/COORD.h"
 
 namespace Lamter
 {
@@ -25,6 +26,8 @@ namespace Lamter
 		static void CLS();
 		static void DrawAt(char character, COORD position);
 		static void DrawAt(std::string text, COORD position);
+		static void Draw(char character);
+		static void Draw(std::string text);
 		static void DrawAt(char character, int x, int y);
 		static void DrawAt(std::string text, int x, int y);
 		static void Fill(char character, int fillAmount);

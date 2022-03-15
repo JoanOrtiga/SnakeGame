@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Classes/COORD.h"
+
 namespace Lamter
 {
 	class Random
@@ -16,6 +18,7 @@ namespace Lamter
 		static void SetSeed(int seed);
 		static void Init();
 		static int GetRandomNumber();
+		static COORD GetRandomCoord(short minX, short minY, short maxX, short maxY);
 
 	private:
 

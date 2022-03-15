@@ -2,6 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <utility>
 
 namespace Lamter
 {
@@ -18,14 +19,14 @@ namespace Lamter
         _SMALL_RECT Rect;
         Rect.Top = 0;
         Rect.Left = 0;
-        Rect.Bottom = _consoleBufferSize.Y - 1;
-        Rect.Right = _consoleBufferSize.X - 1;
+        Rect.Bottom = _consoleBufferSize.y - 1;
+        Rect.Right = _consoleBufferSize.x - 1;
 
         SetConsoleWindowInfo(stdHandle, TRUE, &Rect);
-        SetConsoleScreenBufferSize(stdHandle, _consoleBufferSize);
+        SetConsoleScreenBufferSize(stdHandle, { _consoleBufferSize.x, _consoleBufferSize.y });
 
-        consoleBufferSize.X = _consoleBufferSize.X - 1;
-        consoleBufferSize.Y = _consoleBufferSize.Y - 1;
+        consoleBufferSize.x = _consoleBufferSize.x;
+        consoleBufferSize.y = _consoleBufferSize.y;
 
         SetCursorVisible(showCursor);
     }
@@ -41,10 +42,10 @@ namespace Lamter
     bool ConsoleController::HasConsoleChangedSize()
     {
         GetConsoleScreenBufferInfo(stdHandle, &csbi);
-        if (consoleBufferSize.X != csbi.dwSize.X || consoleBufferSize.Y != csbi.dwSize.Y)
+        if (consoleBufferSize.x != csbi.dwSize.X || consoleBufferSize.y != csbi.dwSize.Y)
         {
-            consoleBufferSize.X = csbi.dwSize.X;
-            consoleBufferSize.Y = csbi.dwSize.Y;
+            consoleBufferSize.x = csbi.dwSize.X;
+            consoleBufferSize.y = csbi.dwSize.Y;
 
             return true;
         }
@@ -103,7 +104,7 @@ namespace Lamter
     void ConsoleController::SetCursorPosition(COORD coord)
     {
         std::cout.flush();
-        SetConsoleCursorPosition(stdHandle, coord);//{coord.Y, coord.X});
+        SetConsoleCursorPosition(stdHandle, {coord.x, coord.y});//{coord.Y, coord.X});
     }
 
     void ConsoleController::CLS()
@@ -112,13 +113,13 @@ namespace Lamter
 
         std::cout.flush();
 
-        DWORD length = consoleBufferSize.X * consoleBufferSize.Y;
+        DWORD length = consoleBufferSize.x * consoleBufferSize.y;
         DWORD written;
 
         // Flood-fill the console with spaces to clear it
-        FillConsoleOutputCharacter(stdHandle, TEXT(' '), length, topLeft, &written);
+        FillConsoleOutputCharacter(stdHandle, TEXT(' '), length, {topLeft.x, topLeft.y}, &written);
         // This clears all background colour formatting
-        FillConsoleOutputAttribute(stdHandle, csbi.wAttributes, length, topLeft, &written);
+        FillConsoleOutputAttribute(stdHandle, csbi.wAttributes, length, { topLeft.x, topLeft.y }, &written);
         // Move the cursor back to the top left for start again
         SetCursorPosition(topLeft);
     }
@@ -135,14 +136,24 @@ namespace Lamter
         std::cout << text;
     }
 
+    void ConsoleController::Draw(char character)
+    {
+        std::cout << character;
+    }
+
+    void ConsoleController::Draw(std::string text)
+    {
+        std::cout << text;
+    }
+
     void ConsoleController::DrawAt(char character, int x, int y)
     {
-        DrawAt(character, { (short)x, (short)y });
+        DrawAt(character, { x, y });
     }
 
     void ConsoleController::DrawAt(std::string text, int x, int y)
     {
-        DrawAt(text, { (short)x, (short)y });
+        DrawAt(text, { x, y });
     }
 
     void ConsoleController::Fill(char character, int fillAmount)

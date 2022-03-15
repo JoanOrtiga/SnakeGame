@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 namespace Lamter
 {
@@ -21,9 +22,16 @@ namespace Lamter
 		return rand();
 	}
 
+	COORD Random::GetRandomCoord(short minX, short minY, short maxX, short maxY)
+	{
+		short x = GetRandomNumberInRange(minX, maxX);
+		short y = GetRandomNumberInRange(minY, maxY);
+		return { x, y };
+	}
+
 	int Random::GetRandomNumberInRange(int min, int max)
 	{
-		return min + (rand() % max);
+		return min + (rand() % (int)(max - min + 1));
 	}
 
 	char Random::GetRandomLetter()
